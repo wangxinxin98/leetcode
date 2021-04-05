@@ -23,9 +23,9 @@ class Solution {                                    // dp[i] = 2 + dp[i-1] + dp[
         int l = s.length();
         int[] dp = new int[l];
         int res = 0;
-        for (int i = 0; i < l; i++){
-            dp[i] = 0;
-        }
+//        for (int i = 0; i < l; i++){
+//            dp[i] = 0;
+//        }
         for (int i = 1; i < l; i++){
             if (s.charAt(i) == ')'){
                 if (i-dp[i-1]-1 >= 0 && s.charAt(i-dp[i-1]-1) == '('){

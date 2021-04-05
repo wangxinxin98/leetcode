@@ -52,7 +52,18 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int removeElement(int[] nums, int val) {
-
+        int i = 0;
+        int res = 0;
+        while (i < nums.length){
+            if (nums[i] == val){
+                i++;
+            } else {
+                nums[res] = nums[i];
+                res++;
+                i++;
+            }
+        }
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

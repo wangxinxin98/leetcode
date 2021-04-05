@@ -32,7 +32,7 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class MinStack {
     private Stack<Integer> mainStack;
-    private Stack<Integer> assistStack;
+    private Stack<Integer> assistStack;     // 单调递减，最小值为栈顶
 
     /** initialize your data structure here. */
     public MinStack() {

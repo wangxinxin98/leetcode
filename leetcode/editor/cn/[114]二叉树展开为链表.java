@@ -44,7 +44,25 @@
  * }
  */
 class Solution {
-    public void flatten(TreeNode root) {
+    public void flatten(TreeNode root) {        // 递归方法
+        if (root == null) return;
+        flatten(root.left);     // 1. 先把左子树和右子树展开为链表
+        flatten(root.right);
+
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+
+        root.left = null;       // 2. 将左子树作为右子树
+        root.right = left;
+
+        TreeNode tmp = root;
+        while (tmp.right != null){
+            tmp = tmp.right;
+        }
+        tmp.right = right;      // 3. 将右子树接到之前左子树的末端
+    }
+
+    /*public void flatten(TreeNode root) {
         TreeNode predecessor = null;
         while (root != null){
             if (root.left != null){
@@ -58,6 +76,6 @@ class Solution {
                 root = root.right;
             }
         }
-    }
+    }*/
 }
 //leetcode submit region end(Prohibit modification and deletion)

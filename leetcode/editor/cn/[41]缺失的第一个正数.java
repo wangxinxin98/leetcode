@@ -30,7 +30,7 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {            // 首次出现的正整数一定位于[1, n+1]
+class Solution {            // 首次出现的正整数一定位于[1, n+1]，使用负号标记已经出现过的正整数
     public int firstMissingPositive(int[] nums) {
         int l = nums.length;
         for (int i = 0; i < l; i++){

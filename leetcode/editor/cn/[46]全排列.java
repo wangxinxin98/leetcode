@@ -18,7 +18,26 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public List<List<Integer>> permute(int[] nums) {
+    public List<List<Integer>> permute(int[] num) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        permuteCore(num, res, new ArrayList<Integer>());
+        return res;
+    }
+
+    public void permuteCore(int[] num, List<List<Integer>> res, List<Integer> temp){
+        if (temp.size() == num.length){
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+        for (int i = 0; i < num.length; i++){
+            if (!temp.contains(num[i])){
+                temp.add(num[i]);
+                permuteCore(num, res, temp);
+                temp.remove(temp.size()-1);
+            }
+        }
+    }
+    /*public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         List<Integer> temp = new ArrayList<Integer>();
         for (int num :
@@ -40,6 +59,6 @@ class Solution {
             backTracing(n, nums, begin+1, temp, res);
             Collections.swap(temp, begin, i);
         }
-    }
+    }*/
 }
 //leetcode submit region end(Prohibit modification and deletion)

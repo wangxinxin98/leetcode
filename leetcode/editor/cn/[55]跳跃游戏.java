@@ -22,7 +22,7 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution {        // 贪心
     public boolean canJump(int[] nums) {
         int longest = 0;
         int l = nums.length;

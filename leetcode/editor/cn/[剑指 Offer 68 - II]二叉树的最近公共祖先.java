@@ -31,8 +31,11 @@
 // 所有节点的值都是唯一的。 
 // p、q 为不同节点且均存在于给定的二叉树中。 
 // 
+//
+// 注意：本题与主站 236 题相同：https://leetcode-cn.com/problems/lowest-common-ancestor-of-a
+//-binary-tree/ 
 // Related Topics 树 
-// 👍 889 👎 0
+// 👍 221 👎 0
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -51,11 +54,9 @@ class Solution {
         if (root == p || root == q) return root;
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
-        if (left != null && right != null) return root;     // 1. root的左右子树各包含p和q
-        else if (left == null && right == null) return null;        // 2.
-        else if (left == null) return right;    // 3.1 p和q都不在左子树，说明最近公共祖先是p和q在右子树上的最近公共祖先
-        else if (right == null) return left;    // 3.2 p和q都不在右子树，说明最近公共祖先是p和q在左子树上的最近公共祖先
-        else return null;
+        if (left != null && right != null) return root;     // 1. 左右子树各存在p、q中的一个
+        if (left == null && right == null) return null;     // 2. 左右子树都不存在p、q
+        return left == null ? right: left;      // 3. 左子树返回空，p、q都在右子树；反之，都在左子树
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

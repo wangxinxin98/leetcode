@@ -18,7 +18,7 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public List<List<Integer>> combine(int n, int k) {
+    /*public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         List<Integer> temp = new ArrayList<Integer>();
         backTracing(1, n, k, temp, res);
@@ -34,6 +34,26 @@ class Solution {
             temp.add(i);
             backTracing(i+1, n, k, temp, res);
             temp.remove(temp.size()-1);
+        }
+    }*/
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        combineCore(1, n, k, new ArrayList<Integer>(), res);
+        return res;
+    }
+
+    public void combineCore(int index, int n, int k, List<Integer> temp, List<List<Integer>> res){
+        if (temp.size() == k){
+            res.add(new ArrayList<Integer>(temp));
+            return;
+        }
+
+        for (int i = index; i <= n; i++){
+            if (!temp.contains(i)){
+                temp.add(i);
+                combineCore(i, n, k, temp, res);
+                temp.remove(temp.size()-1);
+            }
         }
     }
 }
